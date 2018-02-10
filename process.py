@@ -15,11 +15,12 @@ def get_ten_last():
 	return pd.read_json(base+u1)['offers'].apply(pd.Series)
 
 def get_refs():
+	N = get_count()
 	try:
 		with open('refs', 'r') as f:
 			refs = json.load(f)
 	except:
-		refs = [c['id'] for i in range(11) for c in proxy_requests(base+u1+str(i)\
+		refs = [c['id'] for i in range(1,N) for c in proxy_requests(base+u1+str(i)\
 			+str(1)).json()['offers']]
 		with open('refs', 'w') as g:
 			json.dump(refs, g, ensure_ascii=False)
