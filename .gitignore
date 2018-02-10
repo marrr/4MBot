@@ -3,3 +3,7 @@ include
 lib
 pip-selfcheck.json
 selenium
+__pycache__
+proxies
+refs
+uas
