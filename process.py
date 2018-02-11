@@ -26,6 +26,18 @@ def get_refs():
 			json.dump(refs, g, ensure_ascii=False)
 	return refs
 
+def get_data():
+	try:
+		with open('offres', 'r') as f:
+			offres = json.load(f)
+	except:
+		refs = get_refs()
+		offres = [proxy_requests(base+u2+str(j)).json() for j in refs[0:31]]
+		with open('offres', 'w') as g:
+			json.dump(offres, g, ensure_ascii=False)
+	return json_normalize(offres)
+
 if __name__ == '__main__':
-	get_refs()
+	x = get_data()
+	print (x)
 
